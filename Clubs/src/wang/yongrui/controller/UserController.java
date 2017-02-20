@@ -32,7 +32,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    @PreAuthorize("hasPermission('USER', 'Create')")
+    @PreAuthorize("hasPermission('USER', 'CREATE')")
     public UserSRLZ create(@RequestBody UserSRLZ user) {
         return this.userService.create(user);
     }

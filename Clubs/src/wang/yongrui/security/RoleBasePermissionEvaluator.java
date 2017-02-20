@@ -7,9 +7,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Component;
 
 import wang.yongrui.model.enums.PermissionEnum;
 import wang.yongrui.model.enums.TargetDomain;
@@ -22,6 +24,7 @@ import wang.yongrui.service.UserService;
  * @author I323560
  *
  */
+@Component
 public class RoleBasePermissionEvaluator implements PermissionEvaluator {
 
     @Autowired
@@ -50,7 +53,7 @@ public class RoleBasePermissionEvaluator implements PermissionEvaluator {
         roleList.add(role);
         user.setRoleList(roleList);
 
-        if (!this.userService.retrieve(user, null).getContent().isEmpty()) {
+        if (CollectionUtils.isNotEmpty(this.userService.retrieve(user, null).getContent())) {
             hasPermission = true;
         }
 

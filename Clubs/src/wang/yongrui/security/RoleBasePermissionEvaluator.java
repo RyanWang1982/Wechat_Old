@@ -53,7 +53,8 @@ public class RoleBasePermissionEvaluator implements PermissionEvaluator {
         roleList.add(role);
         user.setRoleList(roleList);
 
-        if (CollectionUtils.isNotEmpty(this.userService.retrieve(user, null).getContent())) {
+        List<UserSRLZ> userList = this.userService.retrieve(user, null).getContent();
+        if (CollectionUtils.isNotEmpty(userList) && CollectionUtils.isNotEmpty(userList.get(0).getRoleList())) {
             hasPermission = true;
         }
 

@@ -9,7 +9,7 @@ package wang.yongrui.model.enums;
  */
 public enum InfoType {
 
-    NUMERIC("Numeric"), TEXT("Text"), MULTIPLETEXT("Multiple Text");
+    SINGLEVALUE("Single Value"), MULTIPLEVALUE("Multiple Value");
 
     private String description;
 

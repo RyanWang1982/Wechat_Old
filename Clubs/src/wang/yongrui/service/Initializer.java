@@ -11,12 +11,16 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import org.dozer.DozerBeanMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author I323560
  *
  */
 public abstract class Initializer {
+
+    @Autowired
+    private DozerBeanMapper mapper;
 
     /**
      * @return initializerConfig
@@ -32,8 +36,8 @@ public abstract class Initializer {
         InitializerConfig config = build();
         CSVParser parser = new CSVParser(new FileReader(config.getDataFileLocation()),
                         CSVFormat.EXCEL.withFirstRecordAsHeader());
+
         for (CSVRecord record : parser) {
-            DozerBeanMapper mapper = new DozerBeanMapper();
             config.getRepository().save(mapper.map(record.toMap(), config.getEntityClass()));
         }
         parser.close();

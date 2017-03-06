@@ -54,7 +54,7 @@ public class InitializerConfig {
      */
     @SuppressWarnings("rawtypes")
     public Class getEntityClass() {
-        return entityClass;
+        return this.entityClass;
     }
 
     /**
@@ -62,21 +62,21 @@ public class InitializerConfig {
      */
     @SuppressWarnings("rawtypes")
     public CrudRepository getRepository() {
-        return repository;
+        return this.repository;
     }
 
     /**
      * @return the dataFileLocation
      */
     public String getDataFileLocation() {
-        return dataFileLocation;
+        return this.dataFileLocation;
     }
 
     /**
      * @return the initializedEntityList
      */
     public List<Object> getInitializedEntityList() {
-        return initializedEntityList;
+        return this.initializedEntityList;
     }
 
 }

@@ -38,7 +38,7 @@ public abstract class Initializer<T> {
                         CSVFormat.EXCEL.withFirstRecordAsHeader());
 
         for (CSVRecord record : parser) {
-            
+
             config.getRepository().save(this.mapper.map(record.toMap(), config.getEntityClass()));
         }
         parser.close();

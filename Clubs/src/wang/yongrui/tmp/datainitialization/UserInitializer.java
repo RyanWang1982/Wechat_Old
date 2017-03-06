@@ -43,24 +43,24 @@ public class UserInitializer {
     public void initial() {
         try {
 
-            List<Role> roleList = new ArrayList<Role>();
+            List<Role> roleList = new ArrayList<>();
             CSVParser parser = new CSVParser(new FileReader(roleDataFileLocation),
                             CSVFormat.EXCEL.withFirstRecordAsHeader());
             for (CSVRecord record : parser) {
-                roleList.add(mapper.map(record.toMap(), Role.class));
+                roleList.add(this.mapper.map(record.toMap(), Role.class));
             }
 
-            List<User> userList = new ArrayList<User>();
+            List<User> userList = new ArrayList<>();
             parser = new CSVParser(new FileReader(dataFileLocation), CSVFormat.EXCEL.withFirstRecordAsHeader());
             for (CSVRecord record : parser) {
-                User user = mapper.map(record.toMap(), User.class);
+                User user = this.mapper.map(record.toMap(), User.class);
                 user.setRoleList(roleList);
                 userList.add(user);
             }
 
             parser.close();
 
-            repository.save(userList);
+            this.repository.save(userList);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (MappingException e) {

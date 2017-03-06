@@ -3,7 +3,7 @@
  */
 package wang.yongrui.model.jpa;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -22,21 +22,21 @@ public class Permission extends PermissionBasic {
     @ManyToMany
     @JoinTable(name = "role_permission", joinColumns = { @JoinColumn(name = "permission_id") }, inverseJoinColumns = {
                     @JoinColumn(name = "role_id") })
-    private List<Role> roleList;
+    private Set<Role> roleSet;
 
     /**
-     * @return the roleList
+     * @return the roleSet
      */
-    public List<Role> getRoleList() {
-        return this.roleList;
+    public Set<Role> getRoleSet() {
+        return roleSet;
     }
 
     /**
-     * @param roleList
-     *            the roleList to set
+     * @param roleSet
+     *            the roleSet to set
      */
-    public void setRoleList(List<Role> roleList) {
-        this.roleList = roleList;
+    public void setRoleSet(Set<Role> roleSet) {
+        this.roleSet = roleSet;
     }
 
 }

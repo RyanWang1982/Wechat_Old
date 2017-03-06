@@ -4,8 +4,9 @@
 package wang.yongrui.security;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,16 +46,16 @@ public class RoleBasePermissionEvaluator implements PermissionEvaluator {
         PermissionSRLZ perm = new PermissionSRLZ();
         perm.setTargetDomain(TargetDomain.valueOf(targetDomain.toString()));
         perm.setPermission(PermissionEnum.valueOf(permission.toString()));
-        List<PermissionSRLZ> permissionList = new ArrayList<>();
-        permissionList.add(perm);
+        Set<PermissionSRLZ> permissionSet = new LinkedHashSet<>();
+        permissionSet.add(perm);
         RoleSRLZ role = new RoleSRLZ();
-        role.setPermissionList(permissionList);
-        List<RoleSRLZ> roleList = new ArrayList<>();
-        roleList.add(role);
-        user.setRoleList(roleList);
+        role.setPermissionSet(permissionSet);
+        Set<RoleSRLZ> roleSet = new LinkedHashSet<>();
+        roleSet.add(role);
+        user.setRoleSet(roleSet);
 
         List<UserSRLZ> userList = this.userService.retrieve(user, null).getContent();
-        if (CollectionUtils.isNotEmpty(userList) && CollectionUtils.isNotEmpty(userList.get(0).getRoleList())) {
+        if (CollectionUtils.isNotEmpty(userList) && CollectionUtils.isNotEmpty(userList.get(0).getRoleSet())) {
             hasPermission = true;
         }
 

@@ -3,6 +3,8 @@
  */
 package wang.yongrui.config;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -51,11 +53,36 @@ public class BeanMappingConfig {
                         }
                         isMappable = true;
                     }
+                    if (destinationFieldType.isEnum()) {
+                        fieldMap.writeDestValue(destination, getEnum(destinationFieldType, sourceFieldValue));
+                        isMappable = true;
+                    }
                 }
 
                 return isMappable;
             }
 
+            private Object getEnum(Class<?> destinationClass, Object source) {
+                Object enumeration = null;
+
+                Method[] methods = destinationClass.getMethods();
+                for (Method method : methods) {
+                    if (method.getName().equalsIgnoreCase("valueOf")) {
+                        try {
+                            enumeration = method.invoke(destinationClass.getClass(), (String) source);
+                        } catch (IllegalArgumentException e) {
+                            e.printStackTrace();
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        } catch (InvocationTargetException e) {
+                            e.printStackTrace();
+                        }
+                        return enumeration;
+                    }
+                }
+                return null;
+            }
         };
     }
+
 }

@@ -7,7 +7,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
@@ -19,6 +21,7 @@ import org.dozer.MappingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import wang.yongrui.model.jpa.Permission;
 import wang.yongrui.model.jpa.Role;
 import wang.yongrui.model.jpa.User;
 import wang.yongrui.repository.UserRepository;
@@ -38,23 +41,31 @@ public class UserInitializer {
 
     private static final String dataFileLocation = "./resources/InitialData/User.csv";
     private static final String roleDataFileLocation = "./resources/InitialData/Role.csv";
+    private static final String permissionDataFileLocation = "./resources/InitialData/Permission.csv";
 
     @PostConstruct
     public void initial() {
         try {
-
-            List<Role> roleList = new ArrayList<>();
-            CSVParser parser = new CSVParser(new FileReader(roleDataFileLocation),
+            Set<Permission> permissionSet = new LinkedHashSet<>();
+            CSVParser parser = new CSVParser(new FileReader(permissionDataFileLocation),
                             CSVFormat.EXCEL.withFirstRecordAsHeader());
             for (CSVRecord record : parser) {
-                roleList.add(this.mapper.map(record.toMap(), Role.class));
+                permissionSet.add(this.mapper.map(record.toMap(), Permission.class));
+            }
+
+            Set<Role> roleSet = new LinkedHashSet<>();
+            parser = new CSVParser(new FileReader(roleDataFileLocation), CSVFormat.EXCEL.withFirstRecordAsHeader());
+            for (CSVRecord record : parser) {
+                Role role = this.mapper.map(record.toMap(), Role.class);
+                role.setPermissionSet(permissionSet);
+                roleSet.add(role);
             }
 
             List<User> userList = new ArrayList<>();
             parser = new CSVParser(new FileReader(dataFileLocation), CSVFormat.EXCEL.withFirstRecordAsHeader());
             for (CSVRecord record : parser) {
                 User user = this.mapper.map(record.toMap(), User.class);
-                user.setRoleList(roleList);
+                user.setRoleSet(roleSet);
                 userList.add(user);
             }
 

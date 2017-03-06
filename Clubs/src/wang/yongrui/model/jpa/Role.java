@@ -3,8 +3,9 @@
  */
 package wang.yongrui.model.jpa;
 
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -22,41 +23,41 @@ public class Role extends RoleBasic {
     @ManyToMany
     @JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "role_id") }, inverseJoinColumns = {
                     @JoinColumn(name = "user_id") })
-    private List<User> userList;
+    private Set<User> userSet;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "role_permission", joinColumns = { @JoinColumn(name = "role_id") }, inverseJoinColumns = {
                     @JoinColumn(name = "permission_id") })
-    private List<Permission> permissionList;
+    private Set<Permission> permissionSet;
 
     /**
-     * @return the userList
+     * @return the userSet
      */
-    public List<User> getUserList() {
-        return this.userList;
+    public Set<User> getUserSet() {
+        return this.userSet;
     }
 
     /**
-     * @param userList
-     *            the userList to set
+     * @param userSet
+     *            the userSet to set
      */
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
+    public void setUserSet(Set<User> userSet) {
+        this.userSet = userSet;
     }
 
     /**
-     * @return the permissionList
+     * @return the permissionSet
      */
-    public List<Permission> getPermissionList() {
-        return this.permissionList;
+    public Set<Permission> getPermissionSet() {
+        return this.permissionSet;
     }
 
     /**
-     * @param permissionList
-     *            the permissionList to set
+     * @param permissionSet
+     *            the permissionSet to set
      */
-    public void setPermissionList(List<Permission> permissionList) {
-        this.permissionList = permissionList;
+    public void setPermissionSet(Set<Permission> permissionSet) {
+        this.permissionSet = permissionSet;
     }
 
 }

@@ -3,7 +3,7 @@
  */
 package wang.yongrui.model.web;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.core.GrantedAuthority;
@@ -37,21 +37,21 @@ public class RoleSRLZ extends RoleBasic implements GrantedAuthority {
         BeanUtils.copyProperties(role, this);
     }
 
-    private List<PermissionSRLZ> permissionList;
+    private Set<PermissionSRLZ> permissionSet;
 
     /**
-     * @return the permissionList
+     * @return the permissionSet
      */
-    public List<PermissionSRLZ> getPermissionList() {
-        return this.permissionList;
+    public Set<PermissionSRLZ> getPermissionSet() {
+        return this.permissionSet;
     }
 
     /**
-     * @param permissionList
-     *            the permissionList to set
+     * @param permissionSet
+     *            the permissionSet to set
      */
-    public void setPermissionList(List<PermissionSRLZ> permissionList) {
-        this.permissionList = permissionList;
+    public void setPermissionSet(Set<PermissionSRLZ> permissionSet) {
+        this.permissionSet = permissionSet;
     }
 
     /*

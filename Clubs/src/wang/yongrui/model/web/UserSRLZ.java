@@ -3,9 +3,10 @@
  */
 package wang.yongrui.model.web;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.BeanUtils;
@@ -40,32 +41,32 @@ public class UserSRLZ extends UserBasic implements UserDetails {
     public UserSRLZ(User user) {
         super();
         BeanUtils.copyProperties(user, this);
-        if (CollectionUtils.isNotEmpty(user.getRoleList())) {
-            List<RoleSRLZ> roleSRLZList = new ArrayList<>();
-            for (Role role : user.getRoleList()) {
-                roleSRLZList.add(new RoleSRLZ(role));
+        if (CollectionUtils.isNotEmpty(user.getRoleSet())) {
+            Set<RoleSRLZ> roleSRLZSet = new LinkedHashSet<>();
+            for (Role role : user.getRoleSet()) {
+                roleSRLZSet.add(new RoleSRLZ(role));
             }
-            setRoleList(roleSRLZList);
+            setRoleSet(roleSRLZSet);
         }
     }
 
-    private List<RoleSRLZ> roleList;
+    private Set<RoleSRLZ> roleSet;
 
     private List<ExtendedInfoSRLZ> extendedInfoList;
 
     /**
-     * @return the roleList
+     * @return the roleSet
      */
-    public List<RoleSRLZ> getRoleList() {
-        return this.roleList;
+    public Set<RoleSRLZ> getRoleSet() {
+        return this.roleSet;
     }
 
     /**
-     * @param roleList
-     *            the roleList to set
+     * @param roleSet
+     *            the roleSet to set
      */
-    public void setRoleList(List<RoleSRLZ> roleList) {
-        this.roleList = roleList;
+    public void setRoleSet(Set<RoleSRLZ> roleSet) {
+        this.roleSet = roleSet;
     }
 
     /**
@@ -90,7 +91,7 @@ public class UserSRLZ extends UserBasic implements UserDetails {
      */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return getRoleList();
+        return getRoleSet();
     }
 
     /*

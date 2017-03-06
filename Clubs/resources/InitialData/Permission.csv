@@ -1,0 +1,6 @@
+name,description,targetDomain,permission
+USER_CREATE,Permission for creating user,USER,CREATE
+USER_RETRIEVE,Permission for retrieving user,USER,RETRIEVE
+USER_UPDATE,Permission for updating user,USER,UPDATE
+USER_DELETE,Permission for deleting user,USER,DELETE
+USER_DEACTIVATE,Permission for deactivating user,USER,DEACTIVATE

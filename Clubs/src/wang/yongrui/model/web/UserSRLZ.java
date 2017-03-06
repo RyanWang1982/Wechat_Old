@@ -3,13 +3,16 @@
  */
 package wang.yongrui.model.web;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import wang.yongrui.model.jpa.Role;
 import wang.yongrui.model.jpa.User;
 import wang.yongrui.model.jpa.basic.UserBasic;
 
@@ -37,6 +40,13 @@ public class UserSRLZ extends UserBasic implements UserDetails {
     public UserSRLZ(User user) {
         super();
         BeanUtils.copyProperties(user, this);
+        if (CollectionUtils.isNotEmpty(user.getRoleList())) {
+            List<RoleSRLZ> roleSRLZList = new ArrayList<RoleSRLZ>();
+            for (Role role : user.getRoleList()) {
+                roleSRLZList.add(new RoleSRLZ(role));
+            }
+            setRoleList(roleSRLZList);
+        }
     }
 
     private List<RoleSRLZ> roleList;

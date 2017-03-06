@@ -27,7 +27,7 @@ public class User extends UserBasic {
                     @JoinColumn(name = "extended_info_id") })
     private List<ExtendedInfo> extendedInfoList;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
                     @JoinColumn(name = "role_id") })
     private List<Role> roleList;

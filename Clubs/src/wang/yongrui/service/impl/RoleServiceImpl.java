@@ -26,7 +26,7 @@ public class RoleServiceImpl implements RoleService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see wang.yongrui.service.RoleService#create(wang.yongrui.model.web.RoleSRLZ)
      */
     @Override
@@ -36,7 +36,7 @@ public class RoleServiceImpl implements RoleService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see wang.yongrui.service.RoleService#retrieve(wang.yongrui.model.web.RoleSRLZ,
      * org.springframework.data.domain.Pageable)
      */
@@ -47,7 +47,7 @@ public class RoleServiceImpl implements RoleService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see wang.yongrui.service.RoleService#putUpdate(wang.yongrui.model.web.RoleSRLZ)
      */
     @Override
@@ -57,7 +57,7 @@ public class RoleServiceImpl implements RoleService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see wang.yongrui.service.RoleService#patchUpdate(wang.yongrui.model.web.RoleSRLZ)
      */
     @Override

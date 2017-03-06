@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package wang.yongrui.config;
 

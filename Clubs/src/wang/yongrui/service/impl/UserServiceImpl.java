@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see wang.yongrui.service.UserService#delete(wang.yongrui.model.web.UserSRLZ)
      */
     @Override

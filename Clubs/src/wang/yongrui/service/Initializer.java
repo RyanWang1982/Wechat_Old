@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package wang.yongrui.service;
 
@@ -17,10 +17,10 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author I323560
  *
  */
-public abstract class Initializer {
+public abstract class Initializer<T> {
 
     @Autowired
-    private DozerBeanMapper mapper;
+    protected DozerBeanMapper mapper;
 
     /**
      * @return initializerConfig
@@ -38,7 +38,8 @@ public abstract class Initializer {
                         CSVFormat.EXCEL.withFirstRecordAsHeader());
 
         for (CSVRecord record : parser) {
-            config.getRepository().save(mapper.map(record.toMap(), config.getEntityClass()));
+            
+            config.getRepository().save(this.mapper.map(record.toMap(), config.getEntityClass()));
         }
         parser.close();
     }

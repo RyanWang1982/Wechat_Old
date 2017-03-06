@@ -1,7 +1,9 @@
 /**
- * 
+ *
  */
 package wang.yongrui.service;
+
+import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
@@ -19,6 +21,8 @@ public class InitializerConfig {
 
     private String dataFileLocation;
 
+    private List<Object> initializedEntityList;
+
     /**
      * @param entityClass
      * @param repository
@@ -33,20 +37,24 @@ public class InitializerConfig {
     }
 
     /**
+     * @param entityClass
+     * @param repository
+     * @param initializedEntityList
+     */
+    @SuppressWarnings("rawtypes")
+    public InitializerConfig(Class entityClass, CrudRepository repository, List<Object> initializedEntityList) {
+        super();
+        this.entityClass = entityClass;
+        this.repository = repository;
+        this.initializedEntityList = initializedEntityList;
+    }
+
+    /**
      * @return the entityClass
      */
     @SuppressWarnings("rawtypes")
     public Class getEntityClass() {
         return entityClass;
-    }
-
-    /**
-     * @param entityClass
-     *            the entityClass to set
-     */
-    @SuppressWarnings("rawtypes")
-    public void setEntityClass(Class entityClass) {
-        this.entityClass = entityClass;
     }
 
     /**
@@ -58,15 +66,6 @@ public class InitializerConfig {
     }
 
     /**
-     * @param repository
-     *            the repository to set
-     */
-    @SuppressWarnings("rawtypes")
-    public void setRepository(CrudRepository repository) {
-        this.repository = repository;
-    }
-
-    /**
      * @return the dataFileLocation
      */
     public String getDataFileLocation() {
@@ -74,11 +73,10 @@ public class InitializerConfig {
     }
 
     /**
-     * @param dataFileLocation
-     *            the dataFileLocation to set
+     * @return the initializedEntityList
      */
-    public void setDataFileLocation(String dataFileLocation) {
-        this.dataFileLocation = dataFileLocation;
+    public List<Object> getInitializedEntityList() {
+        return initializedEntityList;
     }
 
 }

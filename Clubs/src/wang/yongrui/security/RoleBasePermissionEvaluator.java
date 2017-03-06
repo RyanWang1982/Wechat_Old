@@ -45,11 +45,11 @@ public class RoleBasePermissionEvaluator implements PermissionEvaluator {
         PermissionSRLZ perm = new PermissionSRLZ();
         perm.setTargetDomain(TargetDomain.valueOf(targetDomain.toString()));
         perm.setPermission(PermissionEnum.valueOf(permission.toString()));
-        List<PermissionSRLZ> permissionList = new ArrayList<PermissionSRLZ>();
+        List<PermissionSRLZ> permissionList = new ArrayList<>();
         permissionList.add(perm);
         RoleSRLZ role = new RoleSRLZ();
         role.setPermissionList(permissionList);
-        List<RoleSRLZ> roleList = new ArrayList<RoleSRLZ>();
+        List<RoleSRLZ> roleList = new ArrayList<>();
         roleList.add(role);
         user.setRoleList(roleList);
 

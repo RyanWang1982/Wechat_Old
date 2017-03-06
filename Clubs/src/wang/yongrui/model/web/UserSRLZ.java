@@ -41,7 +41,7 @@ public class UserSRLZ extends UserBasic implements UserDetails {
         super();
         BeanUtils.copyProperties(user, this);
         if (CollectionUtils.isNotEmpty(user.getRoleList())) {
-            List<RoleSRLZ> roleSRLZList = new ArrayList<RoleSRLZ>();
+            List<RoleSRLZ> roleSRLZList = new ArrayList<>();
             for (Role role : user.getRoleList()) {
                 roleSRLZList.add(new RoleSRLZ(role));
             }
@@ -85,7 +85,7 @@ public class UserSRLZ extends UserBasic implements UserDetails {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.springframework.security.core.userdetails.UserDetails#getAuthorities()
      */
     @Override
@@ -95,7 +95,7 @@ public class UserSRLZ extends UserBasic implements UserDetails {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.springframework.security.core.userdetails.UserDetails#getUsername()
      */
     @Override
@@ -105,7 +105,7 @@ public class UserSRLZ extends UserBasic implements UserDetails {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.springframework.security.core.userdetails.UserDetails#isAccountNonExpired()
      */
     @Override
@@ -115,7 +115,7 @@ public class UserSRLZ extends UserBasic implements UserDetails {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.springframework.security.core.userdetails.UserDetails#isAccountNonLocked()
      */
     @Override
@@ -125,7 +125,7 @@ public class UserSRLZ extends UserBasic implements UserDetails {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.springframework.security.core.userdetails.UserDetails#isCredentialsNonExpired()
      */
     @Override
@@ -135,7 +135,7 @@ public class UserSRLZ extends UserBasic implements UserDetails {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.springframework.security.core.userdetails.UserDetails#isEnabled()
      */
     @Override

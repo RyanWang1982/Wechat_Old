@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -39,6 +40,7 @@ public class UserBasic extends AuditingEntity {
 
     private String gender;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private Calendar dateOfBirth;
 
     private Integer height;

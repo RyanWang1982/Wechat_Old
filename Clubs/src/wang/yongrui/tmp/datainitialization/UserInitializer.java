@@ -3,21 +3,12 @@
  */
 package wang.yongrui.tmp.datainitialization;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
-import org.dozer.DozerBeanMapper;
-import org.dozer.MappingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,6 +16,7 @@ import wang.yongrui.model.jpa.Permission;
 import wang.yongrui.model.jpa.Role;
 import wang.yongrui.model.jpa.User;
 import wang.yongrui.repository.UserRepository;
+import wang.yongrui.utils.CSVEntityConverter;
 
 /**
  * @author I323560
@@ -34,10 +26,16 @@ import wang.yongrui.repository.UserRepository;
 public class UserInitializer {
 
     @Autowired
-    private DozerBeanMapper mapper;
+    private UserRepository repository;
 
     @Autowired
-    private UserRepository repository;
+    private CSVEntityConverter<Permission> permissionConverter;
+
+    @Autowired
+    private CSVEntityConverter<Role> roleConverter;
+
+    @Autowired
+    private CSVEntityConverter<User> userConverter;
 
     private static final String dataFileLocation = "./resources/InitialData/User.csv";
     private static final String roleDataFileLocation = "./resources/InitialData/Role.csv";
@@ -45,40 +43,21 @@ public class UserInitializer {
 
     @PostConstruct
     public void initial() {
-        try {
-            Set<Permission> permissionSet = new LinkedHashSet<>();
-            CSVParser parser = new CSVParser(new FileReader(permissionDataFileLocation),
-                            CSVFormat.EXCEL.withFirstRecordAsHeader());
-            for (CSVRecord record : parser) {
-                permissionSet.add(this.mapper.map(record.toMap(), Permission.class));
-            }
+        Set<Permission> permissionSet = new LinkedHashSet<>();
+        permissionSet.addAll(this.permissionConverter.getEntityList(permissionDataFileLocation, Permission.class));
 
-            Set<Role> roleSet = new LinkedHashSet<>();
-            parser = new CSVParser(new FileReader(roleDataFileLocation), CSVFormat.EXCEL.withFirstRecordAsHeader());
-            for (CSVRecord record : parser) {
-                Role role = this.mapper.map(record.toMap(), Role.class);
-                role.setPermissionSet(permissionSet);
-                roleSet.add(role);
-            }
-
-            List<User> userList = new ArrayList<>();
-            parser = new CSVParser(new FileReader(dataFileLocation), CSVFormat.EXCEL.withFirstRecordAsHeader());
-            for (CSVRecord record : parser) {
-                User user = this.mapper.map(record.toMap(), User.class);
-                user.setRoleSet(roleSet);
-                userList.add(user);
-            }
-
-            parser.close();
-
-            this.repository.save(userList);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (MappingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        Set<Role> roleSet = new LinkedHashSet<>();
+        roleSet.addAll(this.roleConverter.getEntityList(roleDataFileLocation, Role.class));
+        for (Role role : roleSet) {
+            role.setPermissionSet(permissionSet);
         }
+
+        List<User> userList = this.userConverter.getEntityList(dataFileLocation, User.class);
+        for (User user : userList) {
+            user.setRoleSet(roleSet);
+        }
+
+        this.repository.save(userList);
     }
 
 }

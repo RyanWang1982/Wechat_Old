@@ -28,7 +28,7 @@ public class Permission extends PermissionBasic {
      * @return the roleSet
      */
     public Set<Role> getRoleSet() {
-        return roleSet;
+        return this.roleSet;
     }
 
     /**

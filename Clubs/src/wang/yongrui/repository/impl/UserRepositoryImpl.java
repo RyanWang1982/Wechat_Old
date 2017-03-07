@@ -5,6 +5,7 @@ package wang.yongrui.repository.impl;
 
 import javax.persistence.EntityManager;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
@@ -36,7 +37,10 @@ public class UserRepositoryImpl extends SimpleJpaRepository<User, Long> implemen
      */
     @Override
     public <S extends User> S save(S entity) {
-        entity.setPassword(this.passwordEncoder.encode(entity.getPassword()));
+        if (StringUtils.isNotBlank(entity.getPassword())) {
+            entity.setPassword(this.passwordEncoder.encode(entity.getPassword()));
+        }
+
         return super.save(entity);
     }
 

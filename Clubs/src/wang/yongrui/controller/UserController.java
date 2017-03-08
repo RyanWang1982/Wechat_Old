@@ -39,7 +39,7 @@ public class UserController {
 
     @PostMapping(path = "/retrieving")
     public Page<UserSRLZ> retrieve(@RequestBody UserSRLZ user, Pageable pageable) {
-        return this.userService.retrieve(user, pageable);
+        return this.userService.retrievePage(user, pageable);
     }
 
     @PutMapping

@@ -60,4 +60,44 @@ public class Role extends RoleBasic {
         this.permissionSet = permissionSet;
     }
 
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = (prime * result) + ((this.permissionSet == null) ? 0 : this.permissionSet.hashCode());
+        return result;
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!super.equals(obj)) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Role other = (Role) obj;
+        if (this.permissionSet == null) {
+            if (other.permissionSet != null) {
+                return false;
+            }
+        } else if (!this.permissionSet.equals(other.permissionSet)) {
+            return false;
+        }
+        return true;
+    }
+
 }

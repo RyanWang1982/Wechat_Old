@@ -109,4 +109,44 @@ public class PermissionBasic extends AuditingEntity {
         this.permission = permission;
     }
 
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = (prime * result) + ((this.permission == null) ? 0 : this.permission.hashCode());
+        result = (prime * result) + ((this.targetDomain == null) ? 0 : this.targetDomain.hashCode());
+        return result;
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        PermissionBasic other = (PermissionBasic) obj;
+        if (this.permission != other.permission) {
+            return false;
+        }
+        if (this.targetDomain != other.targetDomain) {
+            return false;
+        }
+        return true;
+    }
+
 }

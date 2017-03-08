@@ -3,11 +3,14 @@
  */
 package wang.yongrui.model.web;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.core.GrantedAuthority;
 
+import wang.yongrui.model.jpa.Permission;
 import wang.yongrui.model.jpa.Role;
 import wang.yongrui.model.jpa.basic.RoleBasic;
 
@@ -35,23 +38,30 @@ public class RoleSRLZ extends RoleBasic implements GrantedAuthority {
     public RoleSRLZ(Role role) {
         super();
         BeanUtils.copyProperties(role, this);
+        if (CollectionUtils.isNotEmpty(role.getPermissionSet())) {
+            Set<PermissionSRLZ> PermissionSRLZSet = new LinkedHashSet<>();
+            for (Permission permission : role.getPermissionSet()) {
+                PermissionSRLZSet.add(new PermissionSRLZ(permission));
+            }
+            setPermissionSRLZSet(PermissionSRLZSet);
+        }
     }
 
-    private Set<PermissionSRLZ> permissionSet;
+    private Set<PermissionSRLZ> permissionSRLZSet;
 
     /**
-     * @return the permissionSet
+     * @return the permissionSRLZSet
      */
-    public Set<PermissionSRLZ> getPermissionSet() {
-        return this.permissionSet;
+    public Set<PermissionSRLZ> getPermissionSRLZSet() {
+        return this.permissionSRLZSet;
     }
 
     /**
-     * @param permissionSet
-     *            the permissionSet to set
+     * @param permissionSRLZSet
+     *            the permissionSRLZSet to set
      */
-    public void setPermissionSet(Set<PermissionSRLZ> permissionSet) {
-        this.permissionSet = permissionSet;
+    public void setPermissionSRLZSet(Set<PermissionSRLZ> permissionSRLZSet) {
+        this.permissionSRLZSet = permissionSRLZSet;
     }
 
     /*

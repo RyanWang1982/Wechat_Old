@@ -3,6 +3,7 @@
  */
 package wang.yongrui.model.jpa.basic;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -20,6 +21,7 @@ public class RoleBasic extends AuditingEntity {
     @GeneratedValue
     private Long id;
 
+    @Column(unique = true)
     private String name;
 
     private String description;
@@ -67,6 +69,46 @@ public class RoleBasic extends AuditingEntity {
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = (prime * result) + ((this.id == null) ? 0 : this.id.hashCode());
+        return result;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!super.equals(obj)) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        RoleBasic other = (RoleBasic) obj;
+        if (this.id == null) {
+            if (other.id != null) {
+                return false;
+            }
+        } else if (!this.id.equals(other.id)) {
+            return false;
+        }
+        return true;
     }
 
 }

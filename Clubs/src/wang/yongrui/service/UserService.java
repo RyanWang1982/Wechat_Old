@@ -17,7 +17,9 @@ public interface UserService extends UserDetailsService {
 
     public UserSRLZ create(UserSRLZ user);
 
-    public Page<UserSRLZ> retrieve(UserSRLZ user, Pageable pageable);
+    public UserSRLZ retrieve(UserSRLZ user);
+
+    public Page<UserSRLZ> retrievePage(UserSRLZ user, Pageable pageable);
 
     public UserSRLZ putUpdate(UserSRLZ user);
 

@@ -108,4 +108,52 @@ public class AuditingEntity {
         this.lastModifiedBy = lastModifiedBy;
     }
 
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = (prime * result) + ((this.lastModifiedBy == null) ? 0 : this.lastModifiedBy.hashCode());
+        result = (prime * result) + ((this.lastModifiedDate == null) ? 0 : this.lastModifiedDate.hashCode());
+        return result;
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        AuditingEntity other = (AuditingEntity) obj;
+        if (this.lastModifiedBy == null) {
+            if (other.lastModifiedBy != null) {
+                return false;
+            }
+        } else if (!this.lastModifiedBy.equals(other.lastModifiedBy)) {
+            return false;
+        }
+        if (this.lastModifiedDate == null) {
+            if (other.lastModifiedDate != null) {
+                return false;
+            }
+        } else if (!this.lastModifiedDate.equals(other.lastModifiedDate)) {
+            return false;
+        }
+        return true;
+    }
+
 }

@@ -49,11 +49,23 @@ public class UserServiceImpl implements UserService {
      * @see wang.yongrui.service.UserService#retrieve(wang.yongrui.model.web.UserSRLZ)
      */
     @Override
-    public Page<UserSRLZ> retrieve(UserSRLZ user, Pageable pageable) {
+    public UserSRLZ retrieve(UserSRLZ user) {
+        User userModel = new User();
+        BeanUtils.copyProperties(user, userModel);
+        return new UserSRLZ(this.userRepository.findOne(Example.of(userModel)));
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see wang.yongrui.service.UserService#retrieve(wang.yongrui.model.web.UserSRLZ)
+     */
+    @Override
+    public Page<UserSRLZ> retrievePage(UserSRLZ user, Pageable pageable) {
         User userModel = new User();
         BeanUtils.copyProperties(user, userModel);
         Page<UserSRLZ> userPage = this.userRepository.findAll(Example.of(userModel), pageable)
-                        .map(new JPAConverter<User, UserSRLZ>(UserSRLZ.class));
+                        .map(new JPAConverter<>(User.class, UserSRLZ.class));
         return userPage;
     }
 

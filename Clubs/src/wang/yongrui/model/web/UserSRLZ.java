@@ -46,27 +46,27 @@ public class UserSRLZ extends UserBasic implements UserDetails {
             for (Role role : user.getRoleSet()) {
                 roleSRLZSet.add(new RoleSRLZ(role));
             }
-            setRoleSet(roleSRLZSet);
+            setRoleSRLZSet(roleSRLZSet);
         }
     }
 
-    private Set<RoleSRLZ> roleSet;
+    private Set<RoleSRLZ> roleSRLZSet;
 
     private List<ExtendedInfoSRLZ> extendedInfoList;
 
     /**
-     * @return the roleSet
+     * @return the roleSRLZSet
      */
-    public Set<RoleSRLZ> getRoleSet() {
-        return this.roleSet;
+    public Set<RoleSRLZ> getRoleSRLZSet() {
+        return this.roleSRLZSet;
     }
 
     /**
-     * @param roleSet
-     *            the roleSet to set
+     * @param roleSRLZSet
+     *            the roleSRLZSet to set
      */
-    public void setRoleSet(Set<RoleSRLZ> roleSet) {
-        this.roleSet = roleSet;
+    public void setRoleSRLZSet(Set<RoleSRLZ> roleSRLZSet) {
+        this.roleSRLZSet = roleSRLZSet;
     }
 
     /**
@@ -91,7 +91,7 @@ public class UserSRLZ extends UserBasic implements UserDetails {
      */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return getRoleSet();
+        return getRoleSRLZSet();
     }
 
     /*

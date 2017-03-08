@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import wang.yongrui.model.jpa.basic.PermissionBasic;
 
@@ -17,6 +19,7 @@ import wang.yongrui.model.jpa.basic.PermissionBasic;
  *
  */
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = { "targetDomain", "permission" }))
 public class Permission extends PermissionBasic {
 
     @ManyToMany

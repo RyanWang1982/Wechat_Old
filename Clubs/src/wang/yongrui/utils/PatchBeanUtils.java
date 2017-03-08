@@ -17,7 +17,7 @@ import org.springframework.util.Assert;
 import org.springframework.util.ClassUtils;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 public class PatchBeanUtils extends BeanUtils {

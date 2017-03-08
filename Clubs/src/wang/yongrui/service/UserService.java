@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import wang.yongrui.model.web.UserSRLZ;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 public interface UserService extends UserDetailsService {

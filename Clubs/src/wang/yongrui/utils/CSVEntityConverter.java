@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 @Component

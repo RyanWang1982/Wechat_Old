@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import wang.yongrui.SpringBoot;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 @Configuration

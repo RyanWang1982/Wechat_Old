@@ -11,7 +11,7 @@ import javax.persistence.MappedSuperclass;
 import wang.yongrui.model.jpa.fundamental.AuditingEntity;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 @MappedSuperclass
@@ -73,7 +73,7 @@ public class RoleBasic extends AuditingEntity {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -86,7 +86,7 @@ public class RoleBasic extends AuditingEntity {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override

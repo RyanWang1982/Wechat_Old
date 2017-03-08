@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 import wang.yongrui.model.jpa.basic.UserBasic;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 @Entity

@@ -15,7 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 @Entity

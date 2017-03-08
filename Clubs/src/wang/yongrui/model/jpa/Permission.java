@@ -15,7 +15,7 @@ import javax.persistence.UniqueConstraint;
 import wang.yongrui.model.jpa.basic.PermissionBasic;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 @Entity

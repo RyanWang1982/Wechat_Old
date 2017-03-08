@@ -11,7 +11,7 @@ import wang.yongrui.model.jpa.Permission;
 import wang.yongrui.model.jpa.basic.PermissionBasic;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 public class PermissionSRLZ extends PermissionBasic implements Serializable {

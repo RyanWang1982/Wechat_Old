@@ -4,7 +4,7 @@
 package wang.yongrui.model.enums;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 public enum InfoType {

@@ -10,7 +10,7 @@ import org.springframework.beans.BeanUtils;
 import wang.yongrui.model.jpa.ExtendedInfo;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 public class ExtendedInfoSRLZ extends ExtendedInfo implements Serializable {

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import wang.yongrui.model.jpa.Role;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 @Repository

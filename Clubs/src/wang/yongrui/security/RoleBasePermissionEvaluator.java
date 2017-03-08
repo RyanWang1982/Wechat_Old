@@ -19,7 +19,7 @@ import wang.yongrui.model.web.UserSRLZ;
 import wang.yongrui.service.UserService;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 @Component

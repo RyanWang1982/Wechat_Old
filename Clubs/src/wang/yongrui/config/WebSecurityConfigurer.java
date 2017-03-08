@@ -16,7 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 @Configuration

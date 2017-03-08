@@ -16,7 +16,7 @@ import wang.yongrui.model.jpa.User;
 import wang.yongrui.repository.UserRepository;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 @Repository

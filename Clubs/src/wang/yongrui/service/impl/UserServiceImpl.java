@@ -21,7 +21,7 @@ import wang.yongrui.service.UserService;
 import wang.yongrui.utils.PatchBeanUtils;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 @Service
@@ -79,7 +79,8 @@ public class UserServiceImpl implements UserService {
         User userModel = new User();
         userModel.setId(user.getId());
         userModel = this.userRepository.findOne(Example.of(userModel));
-        BeanUtils.copyProperties(user, userModel, "id", "activeStatus");
+        String[] ignoreArray = new String[] { "id", "activeStatus" };
+        BeanUtils.copyProperties(user, userModel, ignoreArray);
         return new UserSRLZ(this.userRepository.save(userModel));
     }
 
@@ -93,7 +94,8 @@ public class UserServiceImpl implements UserService {
         User userModel = new User();
         userModel.setId(user.getId());
         userModel = this.userRepository.findOne(Example.of(userModel));
-        PatchBeanUtils.patchProperties(user, userModel, "id", "activeStatus");
+        String[] ignoreArray = new String[] { "id", "activeStatus" };
+        PatchBeanUtils.patchProperties(user, userModel, ignoreArray);
         return new UserSRLZ(this.userRepository.save(userModel));
     }
 

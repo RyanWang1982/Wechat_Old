@@ -14,7 +14,7 @@ import wang.yongrui.model.enums.TargetDomain;
 import wang.yongrui.model.jpa.fundamental.AuditingEntity;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 @MappedSuperclass

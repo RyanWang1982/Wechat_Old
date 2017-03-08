@@ -17,7 +17,7 @@ import javax.persistence.JoinTable;
 import wang.yongrui.model.enums.InfoType;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 @Entity

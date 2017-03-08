@@ -18,7 +18,7 @@ import wang.yongrui.model.jpa.User;
 import wang.yongrui.model.jpa.basic.UserBasic;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 public class UserSRLZ extends UserBasic implements UserDetails {

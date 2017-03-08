@@ -11,7 +11,7 @@ import org.springframework.validation.Validator;
 import wang.yongrui.model.jpa.ExtendedInfo;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 @Component("beforeCreateExtendedInfoValidator")

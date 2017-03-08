@@ -14,7 +14,7 @@ import javax.persistence.ManyToMany;
 import wang.yongrui.model.jpa.basic.RoleBasic;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 @Entity

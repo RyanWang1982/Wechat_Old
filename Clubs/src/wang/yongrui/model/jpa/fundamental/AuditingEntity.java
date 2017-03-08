@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import wang.yongrui.model.jpa.User;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 @MappedSuperclass

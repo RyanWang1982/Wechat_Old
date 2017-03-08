@@ -15,7 +15,7 @@ import wang.yongrui.model.jpa.Role;
 import wang.yongrui.model.jpa.basic.RoleBasic;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 public class RoleSRLZ extends RoleBasic implements GrantedAuthority {

@@ -10,7 +10,7 @@ import org.springframework.data.repository.NoRepositoryBean;
 import wang.yongrui.model.jpa.User;
 
 /**
- * @author I323560
+ * @author Yongrui.Wang
  *
  */
 @NoRepositoryBean

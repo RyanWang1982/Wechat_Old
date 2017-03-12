@@ -15,4 +15,9 @@ spring:
 
 # Server
 server:
-  port: 36501
+  port: 80
+#  ssl:
+#    key-store: .keystore
+#    key-alias: Clubs
+#    key-password: 12233368
+#    key-store-type: JKS

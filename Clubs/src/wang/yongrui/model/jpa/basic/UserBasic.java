@@ -51,9 +51,11 @@ public class UserBasic extends AuditingEntity {
 
     private String selfIntroduce;
 
-    private String wechatId;
+    private String weChatId;
 
-    private String wechatOpenId;
+    private String weChatOpenId;
+
+    private String weChatUnionId;
 
     @Enumerated(value = EnumType.STRING)
     private ActiveStatus activeStatus;
@@ -209,33 +211,48 @@ public class UserBasic extends AuditingEntity {
     }
 
     /**
-     * @return the wechatId
+     * @return the weChatId
      */
-    public String getWechatId() {
-        return this.wechatId;
+    public String getWeChatId() {
+        return this.weChatId;
     }
 
     /**
-     * @param wechatId
-     *            the wechatId to set
+     * @param weChatId
+     *            the weChatId to set
      */
-    public void setWechatId(String wechatId) {
-        this.wechatId = wechatId;
+    public void setWeChatId(String weChatId) {
+        this.weChatId = weChatId;
     }
 
     /**
-     * @return the wechatOpenId
+     * @return the weChatOpenId
      */
-    public String getWechatOpenId() {
-        return this.wechatOpenId;
+    public String getWeChatOpenId() {
+        return this.weChatOpenId;
     }
 
     /**
-     * @param wechatOpenId
-     *            the wechatOpenId to set
+     * @param weChatOpenId
+     *            the weChatOpenId to set
      */
-    public void setWechatOpenId(String wechatOpenId) {
-        this.wechatOpenId = wechatOpenId;
+    public void setWeChatOpenId(String weChatOpenId) {
+        this.weChatOpenId = weChatOpenId;
+    }
+
+    /**
+     * @return the weChatUnionId
+     */
+    public String getWeChatUnionId() {
+        return this.weChatUnionId;
+    }
+
+    /**
+     * @param weChatUnionId
+     *            the weChatUnionId to set
+     */
+    public void setWeChatUnionId(String weChatUnionId) {
+        this.weChatUnionId = weChatUnionId;
     }
 
     /**

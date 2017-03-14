@@ -50,9 +50,15 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public UserSRLZ retrieve(UserSRLZ user) {
+        UserSRLZ result = null;
         User userModel = new User();
         BeanUtils.copyProperties(user, userModel);
-        return new UserSRLZ(this.userRepository.findOne(Example.of(userModel)));
+        userModel = this.userRepository.findOne(Example.of(userModel));
+        if (null != userModel) {
+            result = new UserSRLZ(userModel);
+        }
+
+        return result;
     }
 
     /*

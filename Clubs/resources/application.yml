@@ -14,11 +14,11 @@ spring:
     cache: false
 
 # Server
-# ryanwang.imwork.net
+# 0072764.all123.net
 server:
-  port: 80
-#  ssl:
-#    key-store: .keystore
-#    key-alias: Clubs
-#    key-password: 12233368
-#    key-store-type: JKS
+  port: 443
+  ssl:
+    key-store: .keystore
+    key-alias: Clubs
+    key-password: 12233368
+    key-store-type: JKS
